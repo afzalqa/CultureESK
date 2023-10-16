@@ -11,8 +11,8 @@ namespace CultureESK.Test
 
     public class LoginTest : TestBase
     {
-        [Test]
-        public void LoginWithAdminRole()
+        [Test(Description = "Вход с ролью Администратор")]
+        public void LoggingWithAdminRole()
         {
             MainPage mainPage = new MainPage(driver);
 
@@ -20,14 +20,75 @@ namespace CultureESK.Test
 
             mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.09.2023 по 30.09.2023");
         }
-        [Test]
-        public void LoginWithManagmentRole()
+
+        [Test(Description = "Вход с ролью Управление")]
+        public void LoggingWithManagmentRole()
         {
             MainPage mainPage = new MainPage(driver);
 
             mainPage.LoginWithNameAndPassword("upk", "12345678");
 
             mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.09.2023 по 30.09.2023");
+        }
+
+        [Test(Description = "Вход с ролью Учреждение")]
+        public void LoggingWithFacilityRole()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword("uck", "12345678");
+
+            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.09.2023 по 30.09.2023");
+        }
+
+        [Test(Description = "Вход с ролью Кассир")]
+        public void LoggingWithKassaRole()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword("kassa", "12345678");
+
+            mainPage.CheckThatCashierAlertMsgContainsText("Ввод номера ЕСК");
+        }
+
+        [Test(Description = "Вход с невалидным логином")]
+        public void LoggingWithInvalidLogin()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword("ivalidLogin", "12345678");
+
+            mainPage.CheckThatInvalidCredsAlert("Некорректный логин или пароль");
+        }
+
+        [Test(Description = "Вход с невалидным паролем")]
+        public void LoggingWithInvalidPassword()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword("admin", "123");
+
+            mainPage.CheckThatInvalidCredsAlert("Некорректный логин или пароль");
+        }
+
+        [Test(Description = "Вход с пробелом в логине и пароле")]
+        public void LoggingWithSpaceInLoginAndPassword()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword(" ", " ");
+
+            mainPage.CheckThatInvalidCredsAlert("Некорректный логин или пароль");
+        }
+
+        [Test(Description = "Вход без ввода данных")]
+        public void LoggingWithoutDataEntry()
+        {
+            MainPage mainPage = new MainPage(driver);
+
+            mainPage.LoginWithNameAndPassword("", "");
+
+            mainPage.CheckThatEmptyFieldAlert("Заполните все поля");
         }
 
     }
