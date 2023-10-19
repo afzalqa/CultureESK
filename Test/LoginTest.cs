@@ -8,7 +8,7 @@ using System;
 
 namespace CultureESK.Test
 {
-    [TestFixture]
+    [TestFixture(TestName = "Тесты авторизации")]
 
     public class LoginTest : TestBase
     {
