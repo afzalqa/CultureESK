@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AngleSharp.Dom;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,13 @@ namespace CultureESK.Pages
         private By password = By.XPath("//input[@name='password']");
         private By signBtn = By.XPath("//span[@class='dx-button-text']");
 
+        //Sections
+        public By ManagmentBtn = By.CssSelector(".dx-icon.fas.fa-landmark");
+        public By ProductsAndServicesBtn = By.CssSelector(".dx-icon.fas.fa-box-open");
+
+        //Assert
         private By FacilityTitle = By.CssSelector(".content-block.admin-title");
         private By ProductsAndServicesTitle = By.CssSelector(".content-block.product-title");
-        private By Managment = By.CssSelector(".dx-icon.fas.fa-landmark");
 
         public ManagmentPageHelper(IWebDriver driver) : base(driver) { }
 
@@ -44,14 +49,14 @@ namespace CultureESK.Pages
             Click(signBtn);
         }
 
-        public void LoginAsManagmentAndSwitch(string login, string pwd)
+        public void LoginAsManagmentAndSwitch(string login, string pwd, By element)
         {
             Clear(userName);
             SendKeys(userName, login);
             Clear(password);
             SendKeys(password, pwd);
             Click(signBtn);
-            Click(Managment);
+            Click(element);
         }
     }
 }
