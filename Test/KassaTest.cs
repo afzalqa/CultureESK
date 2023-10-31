@@ -30,5 +30,15 @@ namespace CultureESK.Test
 
             mainPage.CheckThatEditProfileTitle("Редактирование профиля");
         }
+
+        [TestCase(TestName = "Клик по кнопке Выход")]
+        public void ClickExitButton()
+        {
+            SectionsHelper mainPage = new SectionsHelper(driver);
+
+            mainPage.LoginAsManagmentAndSwitch("kassa", "12345678", mainPage.ExitButton);
+
+            mainPage.CheckThatAuthorizationTitle("Авторизация");
+        }
     }
 }
