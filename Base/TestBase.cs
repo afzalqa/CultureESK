@@ -19,6 +19,7 @@ namespace CultureESK.Base
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://test-culture.eskso.ru/login");
+
         }
 
         [TearDown]
