@@ -1,10 +1,5 @@
 ﻿using CultureESK.Base;
 using CultureESK.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CultureESK.Test
 {
@@ -62,7 +57,7 @@ namespace CultureESK.Test
             facilityPage.CheckThatFacilityNameTitle("Наименование учреждения");
         }
 
-        [TestCase(TestName = "Скачивание отчета")]
+        [TestCase(TestName = "Скачивание отчета")]// доработать
         public void DownloadReport()
         {
             SectionsHelper sectionPage = new SectionsHelper(driver);
