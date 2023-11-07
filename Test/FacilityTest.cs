@@ -8,47 +8,69 @@ using System.Threading.Tasks;
 
 namespace CultureESK.Test
 {
-    [TestFixture(TestName = "Доступные разделы для роли Учреждение")]
+    [TestFixture(TestName = "Тесты для роли Учреждение")]
     public class FacilityTest : TestBase
     {
         [TestCase(TestName = "Переход в раздел Отчет")]
         public void SwitchToReportSection()
         {
-            SectionsHelper mainPage = new SectionsHelper(driver);
+            SectionsHelper sectionPage = new SectionsHelper(driver);
 
-            mainPage.LoginWithNameAndPassword("uck", "12345678");
+            sectionPage.LoginWithNameAndPassword("uck", "12345678");
 
-            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.09.2023 по 30.09.2023");
+            sectionPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.10.2023 по 31.10.2023");
         }
 
         [TestCase(TestName = "Переход в раздел Товары и услуги")]
         public void SwitchToProductsAndServices()
         {
-            SectionsHelper mainPage = new SectionsHelper(driver);
+            SectionsHelper sectionPage = new SectionsHelper(driver);
 
-            mainPage.LoginAsManagmentAndSwitch("uck", "12345678", mainPage.ProductsAndServicesSection);
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.ProductsAndServicesSection);
 
-            mainPage.CheckThatProductsAndServicesTitle("Товары и услуги");
+            sectionPage.CheckThatProductsAndServicesTitle("Товары и услуги");
         }
 
         [TestCase(TestName = "Переход в раздел Администрирование")]
         public void SwitchToAdministration()
         {
-            SectionsHelper mainPage = new SectionsHelper(driver);
+            SectionsHelper sectionPage = new SectionsHelper(driver);
 
-            mainPage.LoginAsManagmentAndSwitch("uck", "12345678", mainPage.AdministrationSection);
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.AdministrationSection);
 
-            mainPage.CheckThatAdministrationTitle("Администрирование");
+            sectionPage.CheckThatAdministrationTitle("Администрирование");
         }
 
         [TestCase(TestName = "Клик по кнопке Выход")]
         public void ClickExitButton()
         {
-            SectionsHelper mainPage = new SectionsHelper(driver);
+            SectionsHelper sectionPage = new SectionsHelper(driver);
 
-            mainPage.LoginAsManagmentAndSwitch("uck", "12345678", mainPage.ExitButton);
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.ExitButton);
 
-            mainPage.CheckThatAuthorizationTitle("Авторизация");
+            sectionPage.CheckThatAuthorizationTitle("Авторизация");
         }
+
+        [TestCase(TestName = "Формирование отчета")]
+        public void ReportGeneration() 
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginWithNameAndPassword("uck", "12345678");
+            facilityPage.ReportGenerate();
+            facilityPage.CheckThatFacilityNameTitle("Наименование учреждения");
+        }
+
+        [TestCase(TestName = "Скачивание отчета")]
+        public void DownloadReport()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginWithNameAndPassword("uck", "12345678");
+            facilityPage.DownloadExelReport();
+        }
+
     }
 }

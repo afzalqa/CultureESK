@@ -1,6 +1,7 @@
 ﻿using CultureESK.Base;
 using CultureESK.Pages;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace CultureESK.Test
             mainPage.CheckThatAuthorizationTitle("Авторизация");
         }
 
-        [TestCase(TestName = "Редактирование профиля кассира")]
+        [TestCase(TestName = "Редактирование профиля кассира")] //доработать
         public void EditKassaProfile()
         {
             SectionsHelper mainPage = new SectionsHelper(driver);
@@ -53,7 +54,7 @@ namespace CultureESK.Test
             mainPage.CheckThatEnteringESKNumberTitle("Ввод номера ЕСК");
         }
 
-        [TestCase(TestName = "Отмена редактирвоания профиля кассира")]
+        [TestCase(TestName = "Отмена редактирования профиля кассира")] //доработать
         public void CancelEditingKassaProfile() 
         {
             SectionsHelper sectionPage = new SectionsHelper(driver);
