@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers; // Для ExpectedConditions
 
 namespace CultureESK.Pages
 {
@@ -59,5 +56,12 @@ namespace CultureESK.Pages
                 return false;
             }
         }
+
+        public void WaitForElementToBeClickable(IWebDriver driver, By element, int timeoutInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            wait.Until(ExpectedConditions.ElementToBeClickable(element));
+        }
+
     }
 }
