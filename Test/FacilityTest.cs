@@ -67,5 +67,80 @@ namespace CultureESK.Test
             facilityPage.DownloadExelReport();
         }
 
+        [TestCase(TestName = "Добавление товара")]
+        public void AddProduct()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.ProductsAndServicesSection);
+            facilityPage.AddProductAsFacility("Новый товар");
+            sectionPage.CheckThatProductsAndServicesTitle("Товары и услуги");
+        }
+
+        [TestCase(TestName = "Удаление товара")] //доработать и придумать Assert
+        public void RemoveProduct() 
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.ProductsAndServicesSection);
+            facilityPage.RemoveProduct();
+        }
+
+        [TestCase(TestName = "Редактирование товара")]
+        public void UpdateProduct() 
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.ProductsAndServicesSection);
+            facilityPage.EditProductAsFacility("Редактируем товар", "Описание редактируемого товара");
+            sectionPage.CheckThatProductsAndServicesTitle("Товары и услуги");
+        }
+
+        [TestCase(TestName = "Добавление профиля кассира")]
+        public void AddNewKassirProfileAsFacility()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.AdministrationSection);
+            facilityPage.AddNewKassirProfileAsFacility("atlogin", "atSurname", "atName", "atMiddlename", "asdf1234", facilityPage.AddNewProfileBtn, facilityPage.KassirRole);
+            sectionPage.CheckThatAdministrationTitle("Администрирование");
+        }
+
+        [TestCase(TestName = "Добавление профиля Администратора")]
+        public void AddNewAdminProfileAsFacility()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.AdministrationSection);
+            facilityPage.AddNewKassirProfileAsFacility("atlogin", "atSurname", "atName", "atMiddlename", "asdf1234", facilityPage.AddNewProfileBtn, facilityPage.AdminRole);
+            sectionPage.CheckThatAdministrationTitle("Администрирование");
+        }
+
+        [TestCase(TestName = "Редактиорвание профиля")]
+        public void UpdateProfileAsFacility()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.AdministrationSection);
+            facilityPage.AddNewKassirProfileAsFacility("updatelogin", "updateSurname", "updateName", "updateMiddlename", "asdf1234", facilityPage.EditProfileBtn, facilityPage.AdminRole);
+            sectionPage.CheckThatAdministrationTitle("Администрирование");
+        }
+
+        [TestCase(TestName = "Удаление профиля")]
+        public void DeleteProfileAsFacility()
+        {
+            SectionsHelper sectionPage = new SectionsHelper(driver);
+            FacilityPage facilityPage = new FacilityPage(driver);
+
+            sectionPage.LoginAsManagmentAndSwitch("uck", "12345678", sectionPage.AdministrationSection);
+            facilityPage.DeleteProfile();
+            sectionPage.CheckThatAdministrationTitle("Администрирование");
+        }
     }
 }
