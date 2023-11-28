@@ -1,10 +1,6 @@
 using CultureESK.Base;
 using CultureESK.Pages;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
 
 namespace CultureESK.Test
 {
