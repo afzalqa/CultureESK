@@ -105,7 +105,7 @@ namespace CultureESK.Pages
             SendKeys(MiddleNameProfile, middleName);
             SendKeys(PasswordProfile, password);
             Thread.Sleep(2000);
-            Click(RoleDropDownBtn);
+            Click(RoleDropDownBtn); 
             Thread.Sleep(2000);
             Click(element2);
             Click(SaveProfileBtn);
