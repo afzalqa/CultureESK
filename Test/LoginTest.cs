@@ -15,7 +15,7 @@ namespace CultureESK.Test
 
             mainPage.LoginWithNameAndPassword("admin", "12345678");
 
-            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.10.2023 по 31.10.2023");
+            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.11.2023 по 30.11.2023");
         }
 
         [TestCase(TestName = "Вход с ролью Управление")]
@@ -25,7 +25,7 @@ namespace CultureESK.Test
 
             mainPage.LoginWithNameAndPassword("upk", "12345678");
 
-            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.10.2023 по 31.10.2023");
+            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.11.2023 по 30.11.2023");
         }
 
         [TestCase(TestName = "Вход с ролью Учреждение")]
@@ -35,7 +35,7 @@ namespace CultureESK.Test
 
             mainPage.LoginWithNameAndPassword("uck", "12345678");
 
-            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.10.2023 по 31.10.2023");
+            mainPage.CheckThatAlertMsgContainsText("Отчет по посещениям гражданами учреждений культуры с использованием Единой социальной карты Свердловской области с 01.11.2023 по 30.11.2023");
         }
 
         [TestCase(TestName = "Вход с ролью Кассир")]

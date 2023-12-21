@@ -144,7 +144,7 @@ namespace CultureESK.Test
             SectionsHelper sectionPage = new SectionsHelper(driver);
             FacilityPage facilityPage = new FacilityPage(driver);
 
-            sectionPage.LoginAsManagmentAndSwitch("upk", "12345678", sectionPage.ProductsAndServicesSection);
+            sectionPage.LoginAsManagmentAndSwitch("admin", "12345678", sectionPage.ProductsAndServicesSection);
             facilityPage.RemoveProduct();
         }
 

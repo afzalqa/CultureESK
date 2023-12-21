@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers; // Для ExpectedConditions
 
@@ -61,6 +62,17 @@ namespace CultureESK.Pages
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
+        }
+
+        public void Refresh()
+        {
+            Driver.Navigate().Refresh();
+        }
+
+        public void HoverOverElement(By element)
+        {
+            Actions actions = new Actions(Driver);
+            actions.MoveToElement(Driver.FindElement(element)).Perform();
         }
 
     }

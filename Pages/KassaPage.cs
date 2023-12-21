@@ -48,6 +48,7 @@ namespace CultureESK.Pages
             Clear(surnameInput);
             SendKeys(surnameInput, Surname);
             Clear(nameInput);
+            Refresh();
             SendKeys(nameInput, Name);
             Clear(middleNameInput);
             SendKeys(middleNameInput, MiddleName);
@@ -55,6 +56,8 @@ namespace CultureESK.Pages
             SendKeys(OldPasswordInput, OldPassword);
             Clear(NewPasswordInput);
             SendKeys(NewPasswordInput, NewPassword);
+            ChangePageZoom();
+            Thread.Sleep(4000);
             Click(element);
             Thread.Sleep(4000);
         }

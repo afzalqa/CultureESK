@@ -1,6 +1,7 @@
 ﻿using CultureESK.Base;
 using CultureESK.Pages;
 
+
 namespace CultureESK.Test
 {
     [TestFixture(TestName = "Тесты роли Кассир")]
